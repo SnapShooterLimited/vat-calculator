@@ -659,6 +659,11 @@ class VatCalculator
      */
     public function isValidVATNumber($vatNumber)
     {
+        $countryCode = substr($vatNumber, 0, 2);
+        if($countryCode === 'GB'){
+            return true;
+        }
+
         $details = self::getVATDetails($vatNumber);
 
         if ($details) {
