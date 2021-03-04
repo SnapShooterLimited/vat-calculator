@@ -403,7 +403,7 @@ class VatCalculator
     private function getClientIP()
     {
         if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR']) {
-            $clientIpAddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+            $clientIpAddress = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])[0];
         } elseif (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR']) {
             $clientIpAddress = $_SERVER['REMOTE_ADDR'];
         } else {
